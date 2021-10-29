@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
@@ -20,6 +21,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'frontend/welcome');
 Route::view('/product-details', 'frontend/product-details');
+
+// ADD TO CART
+Route::post('/add-to-cart', [CartController::class, 'addItemToCart'])->name('add.cart');
 
 Auth::routes();
 Route::group(['prefix'=>'admin', 'middleware' => ['auth']], function() {

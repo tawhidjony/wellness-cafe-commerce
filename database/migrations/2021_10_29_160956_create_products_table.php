@@ -20,7 +20,8 @@ class CreateProductsTable extends Migration
             $table->string('title');
             $table->string('photo');
             $table->float('quantity');
-            $table->longText('description');
+            $table->float('price');
+            $table->longText('product_details');
             $table->timestamps();
         });
     }
