@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Traits\FileUpload;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Str;
 class CategoryController extends Controller
 {
+    use FileUpload;
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +16,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categoryList = Category::all();
+        return view('backend.category.index', compact('categoryList'));
     }
 
     /**
@@ -24,7 +27,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $addCategory = New Category();
+        return view('backend.category.create', compact('addCategory'));
     }
 
     /**
@@ -35,7 +39,18 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $filePath = $this->StoreFile($request->file('photo'), 'images/category');
+        if ($filePath) {
+            $data['photo'] = $filePath;
+        }else{
+            $data['photo'] ='';
+        }
+        $data['uuid'] = Str::uuid();
+        $storeCategory = Category::create($data);
+        if($storeCategory){
+            return redirect()->route('category.index')->with('Category has been created successful');
+        }
     }
 
     /**

@@ -46,7 +46,7 @@ class ProductController extends Controller
         //     'quantity'  => 'required'
         // ]);
 
-        try {
+
 
            $data = $request->all();
            $filePath = $this->StoreFile($request->file('photo'), 'images/products');
@@ -61,9 +61,7 @@ class ProductController extends Controller
            if($storeProduct){
             return redirect()->route('product.index')->with('hello');
            }
-        } catch (\Throwable $th) {
-            //throw $th;
-        }
+
     }
 
     /**
@@ -110,4 +108,7 @@ class ProductController extends Controller
     {
         //
     }
+
+
+
 }

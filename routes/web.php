@@ -6,6 +6,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -20,11 +22,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'frontend/welcome');
+Route::get('/', function(){
+    $categoryList = Category::all();
+    $productList = Product::all();
+    return view('frontend/welcome', compact('productList', 'categoryList'));
+});
 Route::view('/product-details', 'frontend/product-details');
 
 // ADD TO CART
+Route::get('/cart', [CartController::class, 'cartIndex'])->name('cart.index');
 Route::post('/add-to-cart', [CartController::class, 'addItemToCart'])->name('add.cart');
+
+// Route::post('/add-to-cart', 'CartController@cartItemAdd')->name('add.cart');
+// Route::post('/add-cart-ajax', 'CartController@cartItemAjax')->name('add.cart.ajax');
+// Route::put('/cart/update', 'CartController@cartUpdate')->name('cart.update');
+// Route::get('/cart/destroy/{rowId}', 'CartController@cartDestroy')->name('cart.destroy');
 
 Auth::routes();
 Route::group(['prefix'=>'admin', 'middleware' => ['auth']], function() {
