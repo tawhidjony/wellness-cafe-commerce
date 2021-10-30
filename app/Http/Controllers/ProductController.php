@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Traits\FileUpload;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    use FileUpload;
     /**
      * Display a listing of the resource.
      *
@@ -37,7 +39,30 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title'     => 'required',
+            'photo'     => 'required',
+            'price'     => 'required',
+            'quantity'  => 'required'
+        ]);
+
+        try {
+           $data = $request->all();
+
+           $filePath = $this->StoreFile($request->file('photo'), 'images/products');
+           if ($filePath) {
+               $data['photo'] = $filePath;
+           }else{
+               $data['photo'] ='';
+           }
+
+           $storeProduct = Product::create($data);
+           if($storeProduct){
+               return redirect()->route('product.index');
+           }
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
 
     /**

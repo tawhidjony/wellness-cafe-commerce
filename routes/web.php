@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
@@ -30,6 +31,7 @@ Route::group(['prefix'=>'admin', 'middleware' => ['auth']], function() {
     Route::group(['middleware' => ['check_permission']], function () {
         Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
         Route::resource('/users', UserController::class);
+        Route::resource('/category', CategoryController::class);
         Route::resource('/product', ProductController::class);
         Route::resource('/roles', RoleController::class);
     });
