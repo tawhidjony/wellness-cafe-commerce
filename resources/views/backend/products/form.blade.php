@@ -20,9 +20,10 @@
                 <label>Category</label>
                 <div class="input-group">
                     <select name="category_id" id="" class="form-control">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
+                        <option value="">Select Category</option>
+                        @foreach ($allCategory as $item)
+                            <option value="{{$item->id}}">{{$item->name}}</option>
+                        @endforeach
                     </select>
                 </div>
                 @if ($errors->has('category_id'))

@@ -120,7 +120,7 @@
                     </div>
                     <div class="px-5 py-3">
                         <h3 class="text-gray-700 uppercase">{{$item->title}}</h3>
-                        <span class="mt-2 text-gray-500">{{$item->price}}</span>
+                        <span class="mt-2 text-gray-500">RM {{$item->price}}</span>
                     </div>
                 </div>
             @endforeach

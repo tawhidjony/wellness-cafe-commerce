@@ -32,4 +32,15 @@ class CartController extends Controller
             return view('/');
         }
     }
+
+    public function cartUpdate(Request $request){
+        Cart::update($request->rowId, $request->qty);
+        return redirect()->back();
+    }
+
+    public function cartDestroy($rowId){
+        Cart::remove($rowId);
+        return redirect()->back();
+    }
+
 }
