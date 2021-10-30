@@ -1,219 +1,129 @@
 @extends('layouts/frontend/app')
 
 @section('content')
-<div class="flex justify-center my-6">
-    <div class="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
-      <div class="flex-1">
-        <table class="w-full text-sm lg:text-base" cellspacing="0">
-          <thead>
-            <tr class="h-12 uppercase">
-              <th class="hidden md:table-cell"></th>
-              <th class="text-left">Product</th>
-              <th class="pl-5 text-left lg:text-right lg:pl-0">
-                <span class="lg:hidden" title="Quantity">Qtd</span>
-                <span class="hidden lg:inline">Quantity</span>
-              </th>
-              <th class="hidden text-right md:table-cell">Unit price</th>
-              <th class="text-right">Total price</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="hidden pb-4 md:table-cell">
-                <a href="#">
-                  <img src="https://limg.app/i/Calm-Cormorant-Catholic-Pinball-Blaster-yM4oub.jpeg" class="w-20 rounded" alt="Thumbnail">
-                </a>
-              </td>
-              <td>
-                <a href="#">
-                  <p class="mb-2 md:ml-4">Earphone</p>
-                  <form action="" method="POST">
-                    <button type="submit" class="text-gray-700 md:ml-4">
-                      <small>(Remove item)</small>
-                    </button>
-                  </form>
-                </a>
-              </td>
-              <td class="justify-center mt-6 md:justify-end md:flex">
-                <div class="w-20 h-10">
-                  <div class="relative flex flex-row w-full h-8">
-                  <input type="number" value="2"
-                    class="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black" />
-                  </div>
-                </div>
-              </td>
-              <td class="hidden text-right md:table-cell">
-                <span class="text-sm font-medium lg:text-base">
-                  10.00€
-                </span>
-              </td>
-              <td class="text-right">
-                <span class="text-sm font-medium lg:text-base">
-                  20.00€
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td class="hidden pb-4 md:table-cell">
-                <a href="#">
-                  <img src="https://limg.app/i/Cute-Constrictor-Super-Sexy-Military-Enforcer-W7mvBp.png" class="w-20 rounded" alt="Thumbnail">
-                </a>
-              </td>
-              <td>
-                <p class="mb-2 md:ml-4">Tesla Model 3</p>
-                <form action="" method="POST">
-                  <button type="submit" class="text-gray-700 md:ml-4">
-                    <small>(Remove item)</small>
-                  </button>
-                </form>
-              </td>
-              <td class="justify-center md:justify-end md:flex md:mt-4">
-              <div class="w-20 h-10">
-                <div class="relative flex flex-row w-full h-8">
-                <input type="number" value="3"
-                  class="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black" />
-                </div>
-              </div>
-              </td>
-              <td class="hidden text-right md:table-cell">
-                <span class="text-sm font-medium lg:text-base">
-                  49,600.01€
-                </span>
-              </td>
-              <td class="text-right">
-                <span class="text-sm font-medium lg:text-base">
-                  148,800.03€
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td class="hidden pb-4 md:table-cell">
-                <a href="#">
-                  <img src="https://limg.app/i/Successful-Spider-Biblical-Mutant---Total-War-lKoE7D.jpeg" class="w-20 rounded" alt="Thumbnail">
-                </a>
-              </td>
-              <td>
-                <p class="mb-2 md:ml-4">Bic 4 colour pen</p>
-                <form action="" method="POST">
-                  <button type="submit" class="text-gray-700 md:ml-4">
-                    <small>(Remove item)</small>
-                  </button>
-                </form>
-              </td>
-              <td class="justify-center md:justify-end md:flex md:mt-8">
-              <div class="w-20 h-10">
-                <div class="relative flex flex-row w-full h-8">
-                <input type="number" value="5"
-                  class="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black" />
-                </div>
-              </div>
 
-              </td>
-              <td class="hidden text-right md:table-cell">
-                <span class="text-sm font-medium lg:text-base">
-                  1.50€
-                </span>
-              </td>
-              <td class="text-right">
-                <span class="text-sm font-medium lg:text-base">
-                  7.50€
-                </span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <hr class="pb-6 mt-6">
-        <div class="my-4 mt-6 -mx-2 lg:flex">
-          <div class="lg:px-2 lg:w-1/2">
-            <div class="p-4 bg-gray-100 rounded-full">
-              <h1 class="ml-2 font-bold uppercase">Coupon Code</h1>
-            </div>
-            <div class="p-4">
-              <p class="mb-4 italic">If you have a coupon code, please enter it in the box below</p>
-              <div class="justify-center md:flex">
-                <form action="" method="POST">
-                    <div class="flex items-center w-full pl-3 bg-white bg-gray-100 border rounded-full h-13">
-                      <input type="coupon" name="code" id="coupon" placeholder="Apply coupon" value="90off"
-                              class="w-full bg-gray-100 outline-none appearance-none focus:outline-none active:outline-none"/>
-                        <button type="submit" class="flex items-center px-3 py-1 text-sm text-white bg-gray-800 rounded-full outline-none md:px-4 hover:bg-gray-700 focus:outline-none active:outline-none">
-                          <svg aria-hidden="true" data-prefix="fas" data-icon="gift" class="w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 448c0 17.7 14.3 32 32 32h160V320H32v128zm256 32h160c17.7 0 32-14.3 32-32V320H288v160zm192-320h-42.1c6.2-12.1 10.1-25.5 10.1-40 0-48.5-39.5-88-88-88-41.6 0-68.5 21.3-103 68.3-34.5-47-61.4-68.3-103-68.3-48.5 0-88 39.5-88 88 0 14.5 3.8 27.9 10.1 40H32c-17.7 0-32 14.3-32 32v80c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16v-80c0-17.7-14.3-32-32-32zm-326.1 0c-22.1 0-40-17.9-40-40s17.9-40 40-40c19.9 0 34.6 3.3 86.1 80h-86.1zm206.1 0h-86.1c51.4-76.5 65.7-80 86.1-80 22.1 0 40 17.9 40 40s-17.9 40-40 40z"/></svg>
-                          <span class="font-medium">Apply coupon</span>
-                        </button>
-                    </div>
-                </form>
+      <div class="flex my-10 shadow-md">
+        <div class="w-3/4 px-10 py-10 bg-white">
+          <div class="flex justify-between pb-8 border-b">
+            <h1 class="text-2xl font-semibold">Shopping Cart</h1>
+            <h2 class="text-2xl font-semibold">3 Items</h2>
+          </div>
+          <div class="flex mt-10 mb-5">
+            <h3 class="w-2/5 text-xs font-semibold text-gray-600 uppercase">Product Details</h3>
+            <h3 class="w-1/5 text-xs font-semibold text-center text-gray-600 uppercase">Quantity</h3>
+            <h3 class="w-1/5 text-xs font-semibold text-center text-gray-600 uppercase">Price</h3>
+            <h3 class="w-1/5 text-xs font-semibold text-center text-gray-600 uppercase">Total</h3>
+          </div>
+          <div class="flex items-center px-6 py-5 -mx-8 hover:bg-gray-100">
+            <div class="flex w-2/5"> <!-- product -->
+              <div class="w-20">
+                <img class="h-24" src="https://drive.google.com/uc?id=18KkAVkGFvaGNqPy2DIvTqmUH_nk39o3z" alt="">
+              </div>
+              <div class="flex flex-col justify-between flex-grow ml-4">
+                <span class="text-sm font-bold">Iphone 6S</span>
+                <span class="text-xs text-red-500">Apple</span>
+                <a href="#" class="text-xs font-semibold text-gray-500 hover:text-red-500">Remove</a>
               </div>
             </div>
-            <div class="p-4 mt-6 bg-gray-100 rounded-full">
-              <h1 class="ml-2 font-bold uppercase">Instruction for seller</h1>
+            <div class="flex justify-center w-1/5">
+              <svg class="w-3 text-gray-600 fill-current" viewBox="0 0 448 512"><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
+              </svg>
+
+              <input class="w-8 mx-2 text-center border" type="text" value="1">
+
+              <svg class="w-3 text-gray-600 fill-current" viewBox="0 0 448 512">
+                <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
+              </svg>
             </div>
-            <div class="p-4">
-              <p class="mb-4 italic">If you have some information for the seller you can leave them in the box below</p>
-              <textarea class="w-full h-24 p-2 bg-gray-100 rounded"></textarea>
-            </div>
+            <span class="w-1/5 text-sm font-semibold text-center">$400.00</span>
+            <span class="w-1/5 text-sm font-semibold text-center">$400.00</span>
           </div>
-          <div class="lg:px-2 lg:w-1/2">
-            <div class="p-4 bg-gray-100 rounded-full">
-              <h1 class="ml-2 font-bold uppercase">Order Details</h1>
+
+          <div class="flex items-center px-6 py-5 -mx-8 hover:bg-gray-100">
+            <div class="flex w-2/5"> <!-- product -->
+              <div class="w-20">
+                <img class="h-24" src="https://drive.google.com/uc?id=10ht6a9IR3K2i1j0rHofp9-Oubl1Chraw" alt="">
+              </div>
+              <div class="flex flex-col justify-between flex-grow ml-4">
+                <span class="text-sm font-bold">Xiaomi Mi 20000mAh</span>
+                <span class="text-xs text-red-500">Xiaomi</span>
+                <a href="#" class="text-xs font-semibold text-gray-500 hover:text-red-500">Remove</a>
+              </div>
             </div>
-            <div class="p-4">
-              <p class="mb-6 italic">Shipping and additionnal costs are calculated based on values you have entered</p>
-                <div class="flex justify-between border-b">
-                  <div class="m-2 text-lg font-bold text-center text-gray-800 lg:px-4 lg:py-2 lg:text-xl">
-                    Subtotal
-                  </div>
-                  <div class="m-2 font-bold text-center text-gray-900 lg:px-4 lg:py-2 lg:text-lg">
-                    148,827.53€
-                  </div>
-                </div>
-                  <div class="flex justify-between pt-4 border-b">
-                    <div class="flex m-2 text-lg font-bold text-gray-800 lg:px-4 lg:py-2 lg:text-xl">
-                      <form action="" method="POST">
-                        <button type="submit" class="mt-1 mr-2 lg:mt-2">
-                          <svg aria-hidden="true" data-prefix="far" data-icon="trash-alt" class="w-4 text-red-600 hover:text-red-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M268 416h24a12 12 0 0012-12V188a12 12 0 00-12-12h-24a12 12 0 00-12 12v216a12 12 0 0012 12zM432 80h-82.41l-34-56.7A48 48 0 00274.41 0H173.59a48 48 0 00-41.16 23.3L98.41 80H16A16 16 0 000 96v16a16 16 0 0016 16h16v336a48 48 0 0048 48h288a48 48 0 0048-48V128h16a16 16 0 0016-16V96a16 16 0 00-16-16zM171.84 50.91A6 6 0 01177 48h94a6 6 0 015.15 2.91L293.61 80H154.39zM368 464H80V128h288zm-212-48h24a12 12 0 0012-12V188a12 12 0 00-12-12h-24a12 12 0 00-12 12v216a12 12 0 0012 12z"/></svg>
-                        </button>
-                      </form>
-                      Coupon "90off"
-                    </div>
-                    <div class="m-2 font-bold text-center text-green-700 lg:px-4 lg:py-2 lg:text-lg">
-                      -133,944.77€
-                    </div>
-                  </div>
-                  <div class="flex justify-between pt-4 border-b">
-                    <div class="m-2 text-lg font-bold text-center text-gray-800 lg:px-4 lg:py-2 lg:text-xl">
-                      New Subtotal
-                    </div>
-                    <div class="m-2 font-bold text-center text-gray-900 lg:px-4 lg:py-2 lg:text-lg">
-                      14,882.75€
-                    </div>
-                  </div>
-                  <div class="flex justify-between pt-4 border-b">
-                    <div class="m-2 text-lg font-bold text-center text-gray-800 lg:px-4 lg:py-2 lg:text-xl">
-                      Tax
-                    </div>
-                    <div class="m-2 font-bold text-center text-gray-900 lg:px-4 lg:py-2 lg:text-lg">
-                      2,976.55€
-                    </div>
-                  </div>
-                  <div class="flex justify-between pt-4 border-b">
-                    <div class="m-2 text-lg font-bold text-center text-gray-800 lg:px-4 lg:py-2 lg:text-xl">
-                      Total
-                    </div>
-                    <div class="m-2 font-bold text-center text-gray-900 lg:px-4 lg:py-2 lg:text-lg">
-                      17,859.3€
-                    </div>
-                  </div>
-                <a href="#">
-                  <button class="flex justify-center w-full px-10 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-700 focus:shadow-outline focus:outline-none">
-                    <svg aria-hidden="true" data-prefix="far" data-icon="credit-card" class="w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M527.9 32H48.1C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48.1 48h479.8c26.6 0 48.1-21.5 48.1-48V80c0-26.5-21.5-48-48.1-48zM54.1 80h467.8c3.3 0 6 2.7 6 6v42H48.1V86c0-3.3 2.7-6 6-6zm467.8 352H54.1c-3.3 0-6-2.7-6-6V256h479.8v170c0 3.3-2.7 6-6 6zM192 332v40c0 6.6-5.4 12-12 12h-72c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h72c6.6 0 12 5.4 12 12zm192 0v40c0 6.6-5.4 12-12 12H236c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h136c6.6 0 12 5.4 12 12z"/></svg>
-                    <span class="ml-2 mt-5px">Procceed to checkout</span>
-                  </button>
-                </a>
+            <div class="flex justify-center w-1/5">
+              <svg class="w-3 text-gray-600 fill-current" viewBox="0 0 448 512"><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
+              </svg>
+
+              <input class="w-8 mx-2 text-center border" type="text" value="1">
+
+              <svg class="w-3 text-gray-600 fill-current" viewBox="0 0 448 512">
+                <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
+              </svg>
             </div>
+            <span class="w-1/5 text-sm font-semibold text-center">$40.00</span>
+            <span class="w-1/5 text-sm font-semibold text-center">$40.00</span>
+          </div>
+
+          <div class="flex items-center px-6 py-5 -mx-8 hover:bg-gray-100">
+            <div class="flex w-2/5"> <!-- product -->
+              <div class="w-20">
+                <img class="h-24" src="https://drive.google.com/uc?id=1vXhvO9HoljNolvAXLwtw_qX3WNZ0m75v" alt="">
+              </div>
+              <div class="flex flex-col justify-between flex-grow ml-4">
+                <span class="text-sm font-bold">Airpods</span>
+                <span class="text-xs text-red-500">Apple</span>
+                <a href="#" class="text-xs font-semibold text-gray-500 hover:text-red-500">Remove</a>
+              </div>
+            </div>
+            <div class="flex justify-center w-1/5">
+              <svg class="w-3 text-gray-600 fill-current" viewBox="0 0 448 512"><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
+              </svg>
+              <input class="w-8 mx-2 text-center border" type="text" value="1">
+
+              <svg class="w-3 text-gray-600 fill-current" viewBox="0 0 448 512">
+                <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
+              </svg>
+            </div>
+            <span class="w-1/5 text-sm font-semibold text-center">$150.00</span>
+            <span class="w-1/5 text-sm font-semibold text-center">$150.00</span>
+          </div>
+
+          <a href="#" class="flex mt-10 text-sm font-semibold text-indigo-600">
+
+            <svg class="w-4 mr-2 text-indigo-600 fill-current" viewBox="0 0 448 512"><path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z"/></svg>
+            Continue Shopping
+          </a>
+        </div>
+
+        <div id="summary" class="w-1/4 px-8 py-10">
+          <h1 class="pb-8 text-2xl font-semibold border-b">Order Summary</h1>
+          <div class="flex justify-between mt-10 mb-5">
+            <span class="text-sm font-semibold uppercase">Items 3</span>
+            <span class="text-sm font-semibold">590$</span>
+          </div>
+          <div>
+            <label class="inline-block mb-3 text-sm font-medium uppercase">Shipping</label>
+            <select class="block w-full p-2 text-sm text-gray-600">
+              <option>Standard shipping - $10.00</option>
+            </select>
+          </div>
+          <div class="py-10">
+            <label for="promo" class="inline-block mb-3 text-sm font-semibold uppercase">Promo Code</label>
+            <input type="text" id="promo" placeholder="Enter your code" class="w-full p-2 text-sm">
+          </div>
+          <button class="px-5 py-2 text-sm text-white uppercase bg-red-500 hover:bg-red-600">Apply</button>
+          <div class="mt-8 border-t">
+            <div class="flex justify-between py-6 text-sm font-semibold uppercase">
+              <span>Total cost</span>
+              <span>$600</span>
+            </div>
+            <button class="w-full py-3 text-sm font-semibold text-white uppercase bg-indigo-500 hover:bg-indigo-600">Checkout</button>
           </div>
         </div>
+
       </div>
-    </div>
-  </div>
+
+
 @endsection
 
 
