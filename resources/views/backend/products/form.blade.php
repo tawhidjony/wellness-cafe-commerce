@@ -19,15 +19,15 @@
                 <label>Category</label>
                 <div class="input-group">
                     <select name="category_id" id="" class="form-control">
-                        <option value="">1</option>
-                        <option value="">1</option>
-                        <option value="">1</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
                     </select>
                 </div>
                 @if ($errors->has('category_id'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('category_id') }}</strong>
-                </span>
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('category_id') }}</strong>
+                    </span>
                 @endif
             </div>
 

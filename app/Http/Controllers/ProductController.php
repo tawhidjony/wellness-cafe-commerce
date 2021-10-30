@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Traits\FileUpload;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Str;
 class ProductController extends Controller
 {
     use FileUpload;
@@ -39,26 +39,27 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'title'     => 'required',
-            'photo'     => 'required',
-            'price'     => 'required',
-            'quantity'  => 'required'
-        ]);
+        // $request->validate([
+        //     'title'     => 'required',
+        //     'photo'     => 'required',
+        //     'price'     => 'required',
+        //     'quantity'  => 'required'
+        // ]);
 
         try {
-           $data = $request->all();
 
+           $data = $request->all();
            $filePath = $this->StoreFile($request->file('photo'), 'images/products');
            if ($filePath) {
                $data['photo'] = $filePath;
            }else{
                $data['photo'] ='';
            }
-
+           $data['uuid'] = Str::uuid();
            $storeProduct = Product::create($data);
+
            if($storeProduct){
-               return redirect()->route('product.index');
+            return redirect()->route('product.index')->with('hello');
            }
         } catch (\Throwable $th) {
             //throw $th;
