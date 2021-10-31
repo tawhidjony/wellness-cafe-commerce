@@ -43,4 +43,14 @@ class CartController extends Controller
         return redirect()->back();
     }
 
+
+    // shipping Addresss
+
+    public function sippingAddress(){
+        return view('frontend.cart.shipping-address');
+    }
+    public function sippingLogin(){
+        return view('frontend.auth.shipping-login');
+    }
+
 }

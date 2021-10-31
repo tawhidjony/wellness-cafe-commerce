@@ -35,8 +35,13 @@ Route::post('/add-to-cart', [CartController::class, 'addItemToCart'])->name('add
 Route::put('/cart/update', [CartController::class, 'cartUpdate'])->name('cart.update');
 Route::get('/cart/destroy/{rowId}', [CartController::class, 'cartDestroy'])->name('cart.destroy');
 
-Auth::routes();
+Route::get('/shipping-login', [CartController::class, 'sippingLogin'])->name('shipping.login')->middleware('front_auth');
+Route::get('/shipping-address', [CartController::class, 'sippingAddress'])->name('shipping.address')->middleware('front_auth');
+Route::view('login', 'backend.auth.login');Auth::routes();
+
+
 Route::group(['prefix'=>'admin', 'middleware' => ['auth']], function() {
+
     Route::group(['middleware' => ['check_permission']], function () {
         Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
         Route::resource('/users', UserController::class);

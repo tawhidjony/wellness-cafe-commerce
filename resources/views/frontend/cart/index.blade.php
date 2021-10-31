@@ -4,7 +4,7 @@
         @php
         $grand_total = 0 ;
         @endphp
-      <div class="flex my-10 shadow-md border rounded">
+      <div class="flex my-10 border rounded shadow-md">
         <div class="w-full px-10 py-10 bg-white">
           <div class="flex justify-between pb-8 border-b">
             <h1 class="text-2xl font-semibold">Shopping Cart</h1>
@@ -35,8 +35,8 @@
                 <form action="{{route('cart.update')}}" method="POST">
                     @method('PUT')
                     @csrf
-                    <input class="w-10 mx-2 p-2 text-center border" type="text" name="qty" value="{{$item->qty}}">
-                    <input type="submit" value="Update" class="px-4 py-2 cursor-pointer border">
+                    <input class="w-10 p-2 mx-2 text-center border" type="text" name="qty" value="{{$item->qty}}">
+                    <input type="submit" value="Update" class="px-4 py-2 border cursor-pointer">
                     <input type="hidden" name="rowId" value="{{$item->rowId}}">
                 </form>
             </div>
@@ -50,18 +50,20 @@
               </div>
           @endforelse
 
-          <div class="flex justify-between items-center border-t">
+          <div class="flex items-center justify-between border-t">
             <h2 class="mt-8">Grand Total</h2>
             <h2 class="mt-8">RM {{$grand_total}}</h2>
         </div>
 
           <div class="flex justify-between">
-              <a href="{{url('/')}}" class="text-sm font-semibold text-indigo-600 flex mt-10">
+              <a href="{{url('/')}}" class="flex mt-10 text-sm font-semibold text-indigo-600">
                   <svg class="w-4 mr-2 text-indigo-600 fill-current" viewBox="0 0 448 512"><path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z"/></svg>
                 Continue Shopping</a>
-              <a href="" class="text-sm font-semibold text-indigo-600 flex mt-10">
+
+              <a href="{{route('shipping.address')}}" class="flex mt-10 text-sm font-semibold text-indigo-600">
                   <svg class="w-4 mr-2 text-indigo-600 fill-current" viewBox="0 0 448 512"><path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z"/></svg>
                 Checkout</a>
+
           </div>
         </div>
 
