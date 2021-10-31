@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class frontAuth
@@ -17,10 +18,11 @@ class frontAuth
      */
     public function handle(Request $request, Closure $next)
     {
-        $paths = $request->path();
-        if( ($paths == "shipping-login" || $paths == "shipping-register" ||$paths == "shipping-address") && (Session::get('user'))){
+
+        if(Auth::user()->isRole == 0 ){
             return redirect('/');
+        }else if(Auth::user()->isRole == 1){
+            return $next($request);
         }
-        return $next($request);
     }
 }

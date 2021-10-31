@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\User;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Symfony\Contracts\Service\Attribute\Required;
 
 class CartController extends Controller
@@ -51,6 +54,38 @@ class CartController extends Controller
     }
     public function sippingLogin(){
         return view('frontend.auth.shipping-login');
+    }
+    public function sippingRegister(){
+        return view('frontend.auth.shipping-register');
+    }
+
+    // public function sippingRegisterPost(Request $request){
+    //   dd( $request->all());
+    //   $user = User::create(request(['name', 'email', 'password']));
+
+    //   auth()->login($user);
+    // }
+    public function sippingRegisterPost(Request $request)
+    {
+        $data = $request->all();
+        $check = $this->create($data);
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            return redirect('/')->withSuccess('Signed in');
+        }
+    }
+
+
+    public function create(array $data)
+    {
+      return User::create([
+        'name' => $data['name'],
+        'email' => $data['email'],
+        'phone' => $data['phone'],
+        'status' => 1,
+        'isRole' => 1,
+        'password' => Hash::make($data['password'])
+      ]);
     }
 
 }

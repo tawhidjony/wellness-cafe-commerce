@@ -6,7 +6,7 @@
         <div class="h-full mt-8 rounded">
             <div id="slider-1">
                 <div class="object-fill h-auto px-10 py-24 text-white bg-center bg-cover"
-                    style="background-image: url(https://images.unsplash.com/photo-1544427920-c49ccfb85579?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1422&q=80)">
+                    style="background-image: url('{{URL::to('images/xB1Z0YyqnVUgFSBu9TB1ZexURAqS3KpEZPkiqKCf.jpg')}}'')">
                     <div class="md:w-1/2">
                         <p class="text-sm font-bold uppercase">Services</p>
                         <p class="text-3xl font-bold">Hello world</p>
