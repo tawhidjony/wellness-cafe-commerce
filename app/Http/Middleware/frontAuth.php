@@ -18,9 +18,10 @@ class frontAuth
      */
     public function handle(Request $request, Closure $next)
     {
-
-        if(Auth::user()->isRole == 0 ){
+        if(!Auth::check()){
             return redirect('/');
+        }else if(Auth::user()->isRole == 0){
+            return redirect()->back();
         }else if(Auth::user()->isRole == 1){
             return $next($request);
         }

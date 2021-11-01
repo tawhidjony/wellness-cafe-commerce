@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Shipping;
 use App\Models\User;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
@@ -52,6 +53,17 @@ class CartController extends Controller
     public function sippingAddress(){
         return view('frontend.cart.shipping-address');
     }
+    public function sippingAddressStore(Request $request){
+        $data = $request->all();
+
+        $shipping = Shipping::create($data);
+
+        if($shipping){
+            $request->session()->put('shipping_id', $shipping->id);
+            return redirect()->route('payment.view');
+        }
+
+    }
     public function sippingLogin(){
         return view('frontend.auth.shipping-login');
     }
@@ -59,12 +71,14 @@ class CartController extends Controller
         return view('frontend.auth.shipping-register');
     }
 
-    // public function sippingRegisterPost(Request $request){
-    //   dd( $request->all());
-    //   $user = User::create(request(['name', 'email', 'password']));
+    public function sippingLoginPost(Request $request)
+    {
 
-    //   auth()->login($user);
-    // }
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            return redirect()->route('cart.index')->withSuccess('Signed in');
+        }
+    }
     public function sippingRegisterPost(Request $request)
     {
         $data = $request->all();
@@ -74,8 +88,6 @@ class CartController extends Controller
             return redirect('/')->withSuccess('Signed in');
         }
     }
-
-
     public function create(array $data)
     {
       return User::create([
@@ -88,4 +100,15 @@ class CartController extends Controller
       ]);
     }
 
+    // Payment
+
+    public function payment(Request $request){
+        $get_cart_item = Cart::content();
+        $shippingId = $request->session()->get('shipping_id');
+        return view('frontend.cart.payment', compact('get_cart_item', 'shippingId'));
+    }
+
+    public function paymentStore(Request $request){
+        $request->dd();
+    }
 }

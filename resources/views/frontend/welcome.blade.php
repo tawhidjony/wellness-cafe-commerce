@@ -3,33 +3,18 @@
 @section('content')
      {{-- slider --}}
      <div class="section">
-        <div class="h-full mt-8 rounded">
+        <div class="h-[450px] mt-8 mb-8 rounded">
             <div id="slider-1">
-                <div class="object-fill h-auto px-10 py-24 text-white bg-center bg-cover"
-                    style="background-image: url('{{URL::to('images/xB1Z0YyqnVUgFSBu9TB1ZexURAqS3KpEZPkiqKCf.jpg')}}'')">
-                    <div class="md:w-1/2">
-                        <p class="text-sm font-bold uppercase">Services</p>
-                        <p class="text-3xl font-bold">Hello world</p>
-                        <p class="mb-10 text-2xl leading-none">Carousel with TailwindCSS and jQuery</p>
-                        <a href="#"
-                            class="px-8 py-4 text-xs font-bold text-white uppercase bg-purple-800 rounded hover:bg-gray-200 hover:text-gray-800">Contact
-                            us</a>
-                    </div>
+                <div class="object-cover h-[450px]  px-10 py-24 text-white bg-center bg-cover"
+                    style="background-image: url('{{'assets/slider/IMG_4452.jpg'}}')">
+
                 </div> <!--  -->
                 <br>
             </div>
 
             <div id="slider-2">
-                <div class="object-fill h-auto px-10 py-24 text-white bg-top bg-cover"
-                    style="background-image: url(https://images.unsplash.com/photo-1544144433-d50aff500b91?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)">
-
-                    <p class="text-sm font-bold uppercase">Services</p>
-                    <p class="text-3xl font-bold">Hello world</p>
-                    <p class="mb-10 text-2xl leading-none">Carousel with TailwindCSS and jQuery</p>
-                    <a href="#"
-                        class="px-8 py-4 text-xs font-bold text-white uppercase bg-purple-800 rounded hover:bg-gray-200 hover:text-gray-800">Contact
-                        us</a>
-
+                <div class="object-cover h-[450px]  px-10 py-24 text-white bg-center bg-cover"
+                    style="background-image: url('{{'assets/slider/IMG_4454.jpg'}}')">
                 </div> <!-- container -->
                 <br>
             </div>

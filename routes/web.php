@@ -38,10 +38,15 @@ Route::get('/cart/destroy/{rowId}', [CartController::class, 'cartDestroy'])->nam
 
 Route::view('login', 'backend.auth.login');
 Auth::routes();
-Route::get('/shipping-login', [CartController::class, 'sippingLogin'])->name('shipping.login')->middleware('front_auth');
-Route::get('/shipping-register', [CartController::class, 'sippingRegister'])->name('shipping.register')->middleware('front_auth');
+Route::get('/shipping-login', [CartController::class, 'sippingLogin'])->name('shipping.login');
+Route::post('/shipping-login-front', [CartController::class, 'sippingLoginPost'])->name('shipping.login.post');
+Route::get('/shipping-register', [CartController::class, 'sippingRegister'])->name('shipping.register');
 Route::post('/shipping-register-front', [CartController::class, 'sippingRegisterPost'])->name('shipping.register.post')->middleware('front_auth');
 Route::get('/shipping-address', [CartController::class, 'sippingAddress'])->name('shipping.address')->middleware('front_auth');
+Route::post('/shipping-address/store', [CartController::class, 'sippingAddressStore'])->name('shipping.store')->middleware('front_auth');
+
+Route::get('/payment', [CartController::class, 'payment'])->name('payment.view')->middleware('front_auth');
+Route::post('/payment/store', [CartController::class, 'paymentStore'])->name('payment.store')->middleware('front_auth');
 
 Route::group(['prefix'=>'admin', 'middleware' => ['auth']], function() {
 
