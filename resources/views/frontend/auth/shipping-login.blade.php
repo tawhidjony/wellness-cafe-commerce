@@ -1,7 +1,7 @@
 @extends('layouts/frontend/app')
 @section('content')
 <div class="flex items-center justify-center min-h-full px-4 py-12 sm:px-6 lg:px-8">
-    <div class="w-full max-w-md space-y-8 my-16">
+    <div class="w-full max-w-md my-16 space-y-8">
       <div>
         <img class="w-auto h-12 mx-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow">
         <h2 class="mt-6 text-3xl font-extrabold text-center text-gray-900">
@@ -10,7 +10,7 @@
       </div>
       <form class="mt-8 space-y-6" action="{{route('shipping.login.post')}}" method="POST">
         @csrf
-        <input type="hidden" name="remember" value="true">
+
         <div class="-space-y-px rounded-md shadow-sm">
           <div>
             <label for="email-address" class="sr-only">Email address</label>
@@ -20,17 +20,6 @@
             <label for="password" class="sr-only">Password</label>
             <input id="password" name="password" type="password" autocomplete="current-password" required class="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password">
           </div>
-        </div>
-
-        <div class="flex items-center justify-between">
-          <div class="flex items-center">
-            <input id="remember-me" name="remember-me" type="checkbox" class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
-            <label for="remember-me" class="block ml-2 text-sm text-gray-900">
-              Remember me
-            </label>
-          </div>
-
-
         </div>
 
         <div>

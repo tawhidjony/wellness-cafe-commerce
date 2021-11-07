@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +28,10 @@ Route::get('/', function(){
     $productList = Product::all();
     return view('frontend/welcome', compact('productList', 'categoryList'));
 });
-Route::view('/product-details', 'frontend/product-details');
+Route::get('/product-details', function(Request $request){
+    return $request->all();
+    return view('frontend/product-details');
+})->name('product.details');
 
 // ADD TO CART
 Route::get('/cart', [CartController::class, 'cartIndex'])->name('cart.index');
@@ -37,11 +41,13 @@ Route::get('/cart/destroy/{rowId}', [CartController::class, 'cartDestroy'])->nam
 
 
 Route::view('login', 'backend.auth.login');
-Auth::routes();
 Route::get('/shipping-login', [CartController::class, 'sippingLogin'])->name('shipping.login');
 Route::post('/shipping-login-front', [CartController::class, 'sippingLoginPost'])->name('shipping.login.post');
 Route::get('/shipping-register', [CartController::class, 'sippingRegister'])->name('shipping.register');
-Route::post('/shipping-register-front', [CartController::class, 'sippingRegisterPost'])->name('shipping.register.post')->middleware('front_auth');
+Route::post('/shipping-register-front', [CartController::class, 'sippingRegisterPost'])->name('shipping.register.post');
+
+Auth::routes();
+Route::post('/logout-front', [CartController::class, 'logoutPerform'])->name('logout.perform');
 Route::get('/shipping-address', [CartController::class, 'sippingAddress'])->name('shipping.address')->middleware('front_auth');
 Route::post('/shipping-address/store', [CartController::class, 'sippingAddressStore'])->name('shipping.store')->middleware('front_auth');
 

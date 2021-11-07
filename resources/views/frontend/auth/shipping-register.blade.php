@@ -1,14 +1,14 @@
 @extends('layouts/frontend/app')
 @section('content')
 <div class="flex items-center justify-center min-h-full px-4 py-12 sm:px-6 lg:px-8">
-    <div class="w-full max-w-md space-y-8 my-16">
+    <div class="w-full max-w-md my-16 space-y-8">
       <div>
         <img class="w-auto h-12 mx-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow">
         <h2 class="mt-6 text-3xl font-extrabold text-center text-gray-900">
           Sign Up
         </h2>
       </div>
-      <form class="mt-8 space-y-6" action="{{route('shipping.register.post')}}" method="POST">
+      <form class="mt-8 space-y-6" action="{{route('shipping.register.post')}}" method="POST" >
         @csrf
 
         <div class="-space-y-px rounded-md shadow-sm">

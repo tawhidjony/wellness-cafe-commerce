@@ -9,7 +9,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Symfony\Contracts\Service\Attribute\Required;
+use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
@@ -78,6 +78,15 @@ class CartController extends Controller
         if (Auth::attempt($credentials)) {
             return redirect()->route('cart.index')->withSuccess('Signed in');
         }
+    }
+    public function logoutPerform(Request $request)
+    {
+
+        Session::flush();
+
+        Auth::logout();
+
+        return redirect('/');
     }
     public function sippingRegisterPost(Request $request)
     {

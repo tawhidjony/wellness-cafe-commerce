@@ -104,7 +104,7 @@
                         </form>
                     </div>
                     <div class="px-5 py-3">
-                        <h3 class="text-gray-700 uppercase">{{$item->title}}</h3>
+                        <h3 class="text-gray-700 uppercase"><a href="{{route('product.details', $item->uuid)}}">{{$item->title}}</a></h3>
                         <span class="mt-2 text-gray-500">RM {{$item->price}}</span>
                     </div>
                 </div>
