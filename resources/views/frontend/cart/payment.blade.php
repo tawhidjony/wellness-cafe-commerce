@@ -68,7 +68,7 @@
                             <button type="submit" class="w-48 h-12 text-xs font-medium text-white bg-blue-500 rounded">Continue to Shipping</button>
                         </div>
                     </div>
-                    <button type="submit" class="w-48 h-12 text-xs font-medium text-white bg-blue-500 rounded">Continue to Shipping</button>
+
                 </form>
         </div>
 
