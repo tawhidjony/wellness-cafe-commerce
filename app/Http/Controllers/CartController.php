@@ -121,7 +121,7 @@ class CartController extends Controller
     }
 
     public function paymentStore(Request $request){
-        dd(Cart::total());
+
         $payment = Payment::create([
             'payment_method' => $request->cash_on_delevery,
             'payment_status' => 0

@@ -30,15 +30,13 @@
         <div  class="flex flex-wrap items-center justify-between mt-8">
             @foreach ($categoryList as $category)
                 <div class="pr-4 md:w-1/4">
-                    <a href="#"
+                    <a href="{{route('category.product', $category->id )}}"
                         class="flex items-center p-4 bg-blue-200 rounded-lg shadow-xs cursor-pointer hover:bg-blue-500 hover:text-gray-100">
-
                         <i class="fas fa-cubes"></i>
                         <div>
                             <p class="ml-2 text-xs font-medium ">
                                {{$category->name}}
                             </p>
-
                         </div>
                     </a>
                 </div>
@@ -104,7 +102,7 @@
                         </form>
                     </div>
                     <div class="px-5 py-3">
-                        <h3 class="text-gray-700 uppercase"><a href="{{route('product.details', $item->uuid)}}">{{$item->title}}</a></h3>
+                        <h3 class="text-gray-700 uppercase"><a href="{{route('product.details', $uuid = ['uuid' => $item->uuid ])}}">{{$item->title}}</a></h3>
                         <span class="mt-2 text-gray-500">RM {{$item->price}}</span>
                     </div>
                 </div>

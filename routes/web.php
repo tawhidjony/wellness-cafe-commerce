@@ -3,6 +3,7 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -28,10 +29,17 @@ Route::get('/', function(){
     $productList = Product::all();
     return view('frontend/welcome', compact('productList', 'categoryList'));
 });
+
 Route::get('/product-details', function(Request $request){
-    return $request->all();
-    return view('frontend/product-details');
+    $singleProduct = Product::where('uuid', $request->uuid)->first();
+    return view('frontend/product-details', compact('singleProduct'));
 })->name('product.details');
+
+Route::get('/category-product/{id}', function(Request $request){
+    $category = Category::where('id', $request->id)->first();
+    $productList = Product::where('category_id', $category->id)->get();
+    return view('frontend/category/category-product', compact('productList', 'category'));
+})->name('category.product');
 
 // ADD TO CART
 Route::get('/cart', [CartController::class, 'cartIndex'])->name('cart.index');
@@ -61,6 +69,7 @@ Route::group(['prefix'=>'admin', 'middleware' => ['auth']], function() {
         Route::resource('/users', UserController::class);
         Route::resource('/category', CategoryController::class);
         Route::resource('/product', ProductController::class);
+        Route::resource('/order', OrderController::class);
         Route::resource('/roles', RoleController::class);
     });
 });

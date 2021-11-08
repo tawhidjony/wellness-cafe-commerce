@@ -35,6 +35,12 @@
                 <div class="menu-title">Products</div>
             </a>
         </li>
+        <li>
+            <a href="{{route('order.index')}}" >
+                <div class="parent-icon icon-color-1"><i class="bx bx-cube-alt"></i></div>
+                <div class="menu-title">Order</div>
+            </a>
+        </li>
 
         @if(auth()->user()->can('users.index') || auth()->user()->can('role.index') || auth()->user()->hasRole('super-admin'))
         <li>

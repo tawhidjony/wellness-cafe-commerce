@@ -5,10 +5,10 @@
     <div class="card-header border-bottom-0">
         <div class="d-flex align-items-center">
             <div>
-                <h5 class="mb-0">Product</h5>
+                <h5 class="mb-0">Orders</h5>
             </div>
             <div class="ml-auto">
-                <a href="{{route('product.create')}}" class="btn btn-white radius-15">Create Product</a>
+                <a href="{{route('dashboard')}}" class="btn btn-white radius-15">Back</a>
             </div>
         </div>
     </div>
@@ -18,27 +18,32 @@
                 <thead>
                     <tr>
                         <th class="text-center">SL</th>
-                        <th class="text-center">Name</th>
-                        {{-- <th class="text-center">Action</th> --}}
+                        <th class="text-center">User</th>
+                        <th class="text-center">Shipping</th>
+                        <th class="text-center">Order Total</th>
+                        <th class="text-center">Status</th>
+                        <th class="text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse($productList as $key => $product )
+                    @forelse($order as $key => $item )
                     <tr>
-                        <td width="33%" class="text-center">{{$key + 1}}</td>
-                        <td width="33%" class="text-center">{{$product->title}}</td>
-                        {{-- <td width="33%" class="text-center" style=" display: flex; width: 100%; justify-content: center;"> --}}
-                            {{-- <a href="{{route('products.edit', $product->id)}}" class="float-left btn btn-primary btn-sm ">
-                                <i class="far fa-edit"></i>
-                                Edit
-                            </a> --}}
+                        <td class="text-center">{{$key + 1}}</td>
+                        <td class="text-center">{{$item->user_id}}</td>
+                        <td class="text-center">{{$item->shipping_id}}</td>
+                        <td class="text-center">{{$item->order_total}}</td>
+                        <td class="text-center">{{$item->status == 0 ? "Pending":"success"}}</td>
+                        <td width="33%" class="text-center" style=" display: flex; width: 100%; justify-content: center;">
+                            <a href="{{route('order.show', $item->id)}}" class="float-left btn btn-primary btn-sm ">
+                                show
+                            </a>
                             {{-- <a href="{{route('product.edit', $product->id)}}"><i class="fadeIn animated bx bx-edit-alt" ></i></a> --}}
                             {{-- <form action="{{route('products.destroy', $product->id)}}", method="POST" class="ml-3">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm "><i class="fas fa-trash"></i> Delete</button>
                             </form> --}}
-                        {{-- </td> --}}
+                        </td>
                     </tr>
                     @empty
                         <tr>
