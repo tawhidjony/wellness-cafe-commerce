@@ -48,7 +48,6 @@ class OrderController extends Controller
     public function show($id)
     {
         $orderShow = Order::find($id);
-        return $orderShow->orderDetails;
         return view('backend.order.show', compact('orderShow'));
     }
 
