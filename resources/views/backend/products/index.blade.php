@@ -17,28 +17,34 @@
             <table class="table mb-0">
                 <thead>
                     <tr>
-                        <th class="text-center">SL</th>
-                        <th class="text-center">Name</th>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Price</th>
                         {{-- <th class="text-center">Action</th> --}}
                     </tr>
                 </thead>
                 <tbody>
                     @forelse($productList as $key => $product )
                     <tr>
-                        <td width="33%" class="text-center">{{$key + 1}}</td>
-                        <td width="33%" class="text-center">{{$product->title}}</td>
-                        {{-- <td width="33%" class="text-center" style=" display: flex; width: 100%; justify-content: center;"> --}}
+                        <td>
+                            <div class="bg-transparent border product-img">
+                                <img src="{{URL::to($product->photo)}}" width="35" alt="">
+                            </div>
+                        </td>
+                        <td >{{$product->title}}</td>
+                        <td >{{$product->price}}</td>
+                        <td width="33%"  style=" display: flex; width: 100%; justify-content: center;"> --}}
                             {{-- <a href="{{route('products.edit', $product->id)}}" class="float-left btn btn-primary btn-sm ">
                                 <i class="far fa-edit"></i>
                                 Edit
                             </a> --}}
                             {{-- <a href="{{route('product.edit', $product->id)}}"><i class="fadeIn animated bx bx-edit-alt" ></i></a> --}}
-                            {{-- <form action="{{route('products.destroy', $product->id)}}", method="POST" class="ml-3">
+                            <form action="{{route('products.destroy', $product->id)}}", method="POST" class="ml-3">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm "><i class="fas fa-trash"></i> Delete</button>
-                            </form> --}}
-                        {{-- </td> --}}
+                            </form>
+                        </td>
                     </tr>
                     @empty
                         <tr>

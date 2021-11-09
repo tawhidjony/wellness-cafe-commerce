@@ -84,4 +84,12 @@ class OrderController extends Controller
     {
         //
     }
+
+    public function orderStatus(Request $request)
+    {
+        $orderStatus = Order::find($request->id);
+        $orderStatus->status = 1;
+        $orderStatus->update();
+        return redirect()->back();
+    }
 }

@@ -11,6 +11,7 @@ use App\Models\User;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
@@ -122,35 +123,43 @@ class CartController extends Controller
 
     public function paymentStore(Request $request){
 
-        $payment = Payment::create([
-            'payment_method' => $request->cash_on_delevery,
-            'payment_status' => 0
-        ]);
+      try {
+          DB::beginTransaction();
+            $payment = Payment::create([
+                'payment_method' => $request->cash_on_delevery,
+                'payment_status' => 0
+            ]);
 
-       if($payment){
-            $data = [];
-            $data['payment_id'] = $payment->id;
-            $data['shipping_id'] = $request->shipping_id;
-            $data['user_id'] = Auth::user()->id;
-            $data['order_total'] =Cart::total();
-            $data['status'] = 0;
-            $order = Order::create($data);
+            if($payment){
+                $data = [];
+                $data['payment_id'] = $payment->id;
+                $data['shipping_id'] = $request->shipping_id;
+                $data['user_id'] = Auth::user()->id;
+                $data['order_total'] = Cart::subtotal();
+                $data['status'] = 0;
+                $order = Order::create($data);
 
-        if($order){
-            $cart_content = Cart::content();
-            foreach ($cart_content as $cart){
-                 OrderDetails::create([
-                    'order_id' => $order->id,
-                    'product_id' => $cart->id,
-                    'name' => $cart->name,
-                    'price' => $cart->price,
-                    'qty' => $cart->qty,
-                    'subtotal' => $cart->qty * $cart->price
-                ]);
+                if($order){
+                    $cart_content = Cart::content();
+                    foreach ($cart_content as $cart){
+                        OrderDetails::create([
+                            'order_id' => $order->id,
+                            'product_id' => $cart->id,
+                            'name' => $cart->name,
+                            'price' => $cart->price,
+                            'qty' => $cart->qty,
+                            'subtotal' => $cart->qty * $cart->price
+                        ]);
+                    }
+                    DB::commit();
+                    Cart::destroy();
+                    return redirect()->route('cart.index')->withSuccess('Order Successfully');
+                }
             }
-            Cart::destroy();
-            return redirect()->route('cart.index')->withSuccess('Order Successfully');
-        }
-       }
+      } catch (\Exception $e) {
+          DB::rollback();
+          report($e);
+          return redirect()->back()->withError('Something went wrong');
+      }
     }
 }

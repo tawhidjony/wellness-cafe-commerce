@@ -35,6 +35,11 @@ Route::get('/product-details', function(Request $request){
     return view('frontend/product-details', compact('singleProduct'));
 })->name('product.details');
 
+Route::get('/product-shop', function(){
+   $productShop = Product::all();
+   return view('frontend/shop', compact('productShop'));
+})->name('product.shop');
+
 Route::get('/category-product/{id}', function(Request $request){
     $category = Category::where('id', $request->id)->first();
     $productList = Product::where('category_id', $category->id)->get();
@@ -70,6 +75,7 @@ Route::group(['prefix'=>'admin', 'middleware' => ['auth']], function() {
         Route::resource('/category', CategoryController::class);
         Route::resource('/product', ProductController::class);
         Route::resource('/order', OrderController::class);
+        Route::post('/order/status', [OrderController::class, 'orderStatus'])->name('order.status');
         Route::resource('/roles', RoleController::class);
     });
 });
