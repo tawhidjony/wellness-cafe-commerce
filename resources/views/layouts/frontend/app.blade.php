@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>wellness cafe</title>
+    <title>wellness Coffee</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -71,10 +71,13 @@
         <footer class="bottom-0 left-0 w-full my-8 text-gray-600 bg-gray-700 body-font">
             <div class="bg-gray-900">
                 <div class="container flex flex-col flex-wrap items-center px-5 py-4 mx-auto sm:flex-row">
-                    <p class="text-xl text-center text-white capitalize sm:text-left">© 2021 wellness cafe
+                    <p class="text-xl text-center text-white capitalize sm:text-left">© 2021 wellness Coffee
                     </p>
                     <span class="inline-flex justify-center mt-2 sm:ml-auto sm:mt-0 sm:justify-start">
-                        <img src="{{URL::to('assets/images/logo/IMG_4496.JPG')}}" class="h-16" alt="">
+                        <img src="{{URL::to('assets/images/logo/1.jpeg')}}" class="h-16 mx-2" alt="" />
+                        <img src="{{URL::to('assets/images/logo/3.jpeg')}}" class="h-16 mx-2" alt="" />
+                        <img src="{{URL::to('assets/images/logo/2.jpeg')}}" class="h-16 mx-2" alt="" />
+                        <img src="{{URL::to('assets/images/logo/4.jpeg')}}" class="h-16 mx-2" alt="" />
                     </span>
                 </div>
             </div>
