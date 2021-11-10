@@ -33,17 +33,8 @@
                         </td>
                         <td >{{$product->title}}</td>
                         <td >{{$product->price}}</td>
-                        <td width="33%"  style=" display: flex; width: 100%; justify-content: center;"> --}}
-                            {{-- <a href="{{route('products.edit', $product->id)}}" class="float-left btn btn-primary btn-sm ">
-                                <i class="far fa-edit"></i>
-                                Edit
-                            </a> --}}
-                            {{-- <a href="{{route('product.edit', $product->id)}}"><i class="fadeIn animated bx bx-edit-alt" ></i></a> --}}
-                            <form action="{{route('products.destroy', $product->id)}}", method="POST" class="ml-3">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm "><i class="fas fa-trash"></i> Delete</button>
-                            </form>
+                        <td width="33%"  style=" display: flex; width: 100%; justify-content: center;"> 
+                    
                         </td>
                     </tr>
                     @empty
